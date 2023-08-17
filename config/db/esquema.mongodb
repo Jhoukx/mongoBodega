@@ -1,5 +1,3 @@
-import { ObjectId } from "mongodb";
-
 use("db_mongo_bodegas");
 db.createCollection("counters");
 db.counters.insertMany([
@@ -26,7 +24,10 @@ db.createCollection("users", {
             required: ['_id', 'name', 'email', 'status', 'password'],
             properties: {
                 _id: {
-                    bsonType: "int"
+                    bsonType: 'objectId'
+                },
+                ID: {
+                    bsonType: 'int'
                 },
                 name: {
                     bsonType: 'string',
@@ -84,7 +85,10 @@ db.createCollection("bodegas", {
             required: ['_id', 'name', 'id_responsible', 'status'],
             properties: {
                 _id: {
-                    bsonType: "int"
+                    bsonType: 'objectId'
+                },
+                ID: {
+                    bsonType: 'int'
                 },
                 name: {
                     bsonType: 'string',
@@ -138,7 +142,10 @@ db.createCollection("productos", {
             required: ['_id', 'name', 'status', 'created_by'],
             properties: {
                 _id: {
-                    bsonType: "int"
+                    bsonType: 'objectId'
+                },
+                ID: {
+                    bsonType: 'int'
                 },
                 name: {
                     bsonType: 'string',
@@ -192,7 +199,10 @@ db.createCollection("inventarios", {
             required: ['_id', 'id_storage', 'id_product', 'quantity'],
             properties: {
                 _id: {
-                    bsonType: "int"
+                    bsonType: 'objectId'
+                },
+                ID: {
+                    bsonType: 'int'
                 },
                 id_storage: {
                     bsonType: 'int',
@@ -231,7 +241,9 @@ db.createCollection("inventarios", {
     }
 });
 
-/* Esquema de 'historiales' */
+/* 
+?Esquema de 'historiales' 
+*/
 use("db_mongo_bodegas");
 db.createCollection("historiales", {
     capped: true,
@@ -244,7 +256,10 @@ db.createCollection("historiales", {
             required: ['_id', 'quantity', 'id_origin_storage', 'id_target_storage', 'id_inventory'],
             properties: {
                 _id: {
-                    bsonType: ObjectId
+                    bsonType: 'objectId'
+                },
+                ID: {
+                    bsonType: 'int'
                 },
                 quantity: {
                     bsonType: 'int',

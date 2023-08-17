@@ -1,0 +1,615 @@
+use("db_mongo_bodegas");
+db.historiales.insertMany([
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 7,
+        id_origin_storage: 12,
+        id_target_storage: 18,
+        id_inventory: 18,
+        created_by: 18
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 9,
+        id_origin_storage: 11,
+        id_target_storage: 12,
+        id_inventory: 18,
+        created_by: 15
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 7,
+        id_origin_storage: 29,
+        id_target_storage: 30,
+        id_inventory: 36,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 666,
+        id_origin_storage: 26,
+        id_target_storage: 24,
+        id_inventory: 27,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 100,
+        id_origin_storage: 19,
+        id_target_storage: 18,
+        id_inventory: 41,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 25,
+        id_origin_storage: 19,
+        id_target_storage: 26,
+        id_inventory: 41,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 25,
+        id_origin_storage: 19,
+        id_target_storage: 26,
+        id_inventory: 41,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 300,
+        id_origin_storage: 18,
+        id_target_storage: 12,
+        id_inventory: 42,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 300,
+        id_origin_storage: 18,
+        id_target_storage: 12,
+        id_inventory: 42,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("historiales")),
+        quantity: 1,
+        id_origin_storage: 12,
+        id_target_storage: 11,
+        id_inventory: 67,
+        created_at: ISODate('2022-07-11'),
+        updated_at: ISODate('2022-07-11')
+    }
+]);
+
+
+use("db_mongo_bodegas");
+
+db.users.insertMany([
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'John',
+        email: 'John@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Lucho',
+        email: 'Lucho@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Diego',
+        email: 'Diego@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Andres',
+        email: 'Andres@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Adrian',
+        email: 'Adrian@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Ivan',
+        email: 'Ivan@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Cristian',
+        email: 'Cristian@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Oscar',
+        email: 'Oscar@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Jose',
+        email: 'Jose@hotmail.com',
+        status: 1,
+        password: '12345'
+    },
+    {
+        ID: Number(autoIncrement("users")),
+        name: 'Daniela',
+        email: 'Daniela@hotmail.com',
+        status: 1,
+        password: '12345'
+    }
+]);
+
+function autoIncrement(coleccion) {
+    const sequenceDocument = db.counters.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+use("db_mongo_bodegas");
+db.bodegas.insertMany([
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega0',
+        id_responsible: 16,
+        status: 1,
+        created_by: 16,
+        created_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega1',
+        id_responsible: 18,
+        status: 1,
+        created_by: 18,
+        created_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega2',
+        id_responsible: 18,
+        status: 1,
+        created_by: 18,
+        created_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega7',
+        id_responsible: 17,
+        status: 1,
+        created_by: 17,
+        created_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega8',
+        id_responsible: 11,
+        status: 1,
+        created_by: 11,
+        created_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega9',
+        id_responsible: 18,
+        status: 1,
+        created_by: 18,
+        created_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega10',
+        id_responsible: 13,
+        status: 1,
+        created_at: ISODate('2022-06-02'),
+        updated_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Districostos',
+        id_responsible: 13,
+        status: 1,
+        created_at: ISODate('2022-06-02'),
+        updated_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Alicante',
+        id_responsible: 15,
+        status: 1,
+        created_at: ISODate('2022-06-02'),
+        updated_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'wevos',
+        id_responsible: 15,
+        status: 1,
+        created_at: ISODate('2022-06-02'),
+        updated_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Diactos',
+        id_responsible: 12,
+        status: 1,
+        created_at: ISODate('2022-06-02'),
+        updated_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'aaaaa',
+        id_responsible: 13,
+        status: 1,
+        created_at: ISODate('2022-06-02'),
+        updated_at: ISODate('2022-06-02')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bbbbbb',
+        id_responsible: 12,
+        status: 1,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodegaElzaPato',
+        id_responsible: 19,
+        status: 1,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'suCasa',
+        id_responsible: 18,
+        status: 1,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'almaMarcela',
+        id_responsible: 17,
+        status: 1,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'central Electric',
+        id_responsible: 18,
+        status: 1,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega27',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-06-24'),
+        updated_at: ISODate('2022-06-24')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Comando0',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-06-29'),
+        updated_at: ISODate('2022-06-29')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega exclusive',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-06-29'),
+        updated_at: ISODate('2022-06-29')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega foreing',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-06-29'),
+        updated_at: ISODate('2022-06-29')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega ABC',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-06-29'),
+        updated_at: ISODate('2022-06-29')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'bodega ElEstress',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-06-29'),
+        updated_at: ISODate('2022-06-29')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Bodega P.I',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-07-01'),
+        updated_at: ISODate('2022-07-01')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Bodega 3.141617',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-07-01'),
+        updated_at: ISODate('2022-07-01')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Bodega nebula 3.14',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-07-11'),
+        updated_at: ISODate('2022-07-11')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Bodega Orion',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2022-07-11'),
+        updated_at: ISODate('2022-07-11')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Bodega Anderson Atuesta',
+        id_responsible: 11,
+        status: 11,
+        created_at: ISODate('2022-07-21'),
+        updated_at: ISODate('2022-07-21')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Bodega Gituesta',
+        id_responsible: 11,
+        status: 11,
+        created_at: ISODate('2022-07-21'),
+        updated_at: ISODate('2022-07-21')
+    },
+    {
+        ID: Number(autoIncrement("bodegas")),
+        name: 'Bodega tesan',
+        id_responsible: 11,
+        status: 1,
+        created_at: ISODate('2023-05-25'),
+        updated_at: ISODate('2023-05-25')
+    }
+]);
+
+
+use("db_mongo_bodegas");
+db.productos.insertMany([
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto0',
+        description: 'producto0',
+        status: 1,
+        created_by: 16
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto1',
+        description: 'producto1',
+        status: 1,
+        created_by: 14
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto2',
+        description: 'producto2',
+        status: 1,
+        created_by: 13
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto3',
+        description: 'producto3',
+        status: 1,
+        created_by: 20
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto4',
+        description: 'producto4',
+        status: 1,
+        created_by: 19
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto5',
+        description: 'producto5',
+        status: 1,
+        created_by: 11
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto6',
+        description: 'producto6',
+        status: 1,
+        created_by: 12
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto7',
+        description: 'producto7',
+        status: 1,
+        created_by: 11
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto8',
+        description: 'producto8',
+        status: 1,
+        created_by: 11
+    },
+    {
+        ID: Number(autoIncrement("productos")),
+        name: 'producto9',
+        description: 'producto9',
+        status: 1,
+        created_by: 19
+    }
+]);
+
+
+use("db_mongo_bodegas");
+db.inventarios.insertMany([
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 12,
+        id_product: 18,
+        quantity: 103,
+        created_by: 11,
+        created_at: ISODate('2023-05-26')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 19,
+        id_product: 18,
+        quantity: 220,
+        created_by: 19
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 20,
+        id_product: 13,
+        quantity: 13,
+        created_by: 14
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 19,
+        id_product: 14,
+        quantity: 7,
+        created_by: 15
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 12,
+        id_product: 27,
+        quantity: 9,
+        created_by: 16
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 19,
+        id_product: 23,
+        quantity: 45666,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 26,
+        id_product: 24,
+        quantity: 45000,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 26,
+        id_product: 25,
+        quantity: 45666,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 26,
+        id_product: 26,
+        quantity: 6000,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 28,
+        id_product: 27,
+        quantity: 89700,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 23,
+        id_product: 28,
+        quantity: 9999,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 18,
+        id_product: 18,
+        quantity: 7898,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 18,
+        id_product: 27,
+        quantity: 55281,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 29,
+        id_product: 29,
+        quantity: 5993,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    },
+    {
+        ID: Number(autoIncrement("inventarios")),
+        id_storage: 29,
+        id_product: 27,
+        quantity: 5005,
+        created_at: ISODate('2022-06-03'),
+        updated_at: ISODate('2022-06-03')
+    }
+]);
