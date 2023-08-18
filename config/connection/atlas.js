@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 dotenv.config('../');
 export async function con() {
     try {
-        const uri = `mongodb+srv://root:${process.env.ATLAS_PASSWORD}@automoviles.swurmvg.mongodb.net/${process.env.ATLAS_DB}`
+        const uri = `mongodb+srv://root:${process.env.ATLAS_PASSWORD}@cluster0.hiif8hy.mongodb.net/${process.env.ATLAS_DB}`
         const options = {
             useNewUrlParser: true,
             useUnifiedTopology: true
