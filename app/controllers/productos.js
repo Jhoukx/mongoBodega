@@ -2,7 +2,7 @@ import { con } from '../../config/connection/atlas.js';
 import { incrementID } from './counter.js';
 
 const db = await con();
-const producto = await db.collection('producto');
+const producto = await db.collection('productos');
 
 const postProduct = async (req,res) => {
     if (!req.rateLimit) return;
@@ -19,6 +19,16 @@ const postProduct = async (req,res) => {
             created_at: new Date(creado_fecha)
         });
         console.log(result);
+        const inventario = db.collection("inventarios");
+        const inventarioId = await incrementID("inventarios");
+        let insertInventario = await inventario.insertOne({
+            ID: inventarioId,
+            id_storage: 20,
+            id_product: productoId,
+            quantity: 20,
+            created_by: creado_por
+        })
+        console.log(insertInventario);
         res.status(201).json({ message: "Producto is added successfully", insertedId: result.insertedId })
     } catch (error) {
         res.status(400).json({status:400,message:error.message})
