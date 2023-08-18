@@ -1,4 +1,4 @@
-import { con } from "../../config/connection.js";
+import { con } from "../../config/connection/atlas.js";
 
 export const incrementID = async (coleccion) => {
     try {
