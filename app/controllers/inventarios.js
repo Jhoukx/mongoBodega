@@ -34,7 +34,7 @@ const postInventario = async (req,res) => {
                     { $set: data }    
                 )
         }
-        res.send(result)
+        res.status(201).json({status:201,message:"The data was saved succesfully :D"})
     } catch (error) {
         res.status(404).json({status:404, message:error.message});
     }

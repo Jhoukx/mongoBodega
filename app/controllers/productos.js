@@ -29,7 +29,7 @@ const postProduct = async (req,res) => {
             created_by: creado_por
         })
         console.log(insertInventario);
-        res.status(201).json({ message: "Producto is added successfully", insertedId: result.insertedId })
+        res.status(201).json({ message: "The Producto was added successfully", insertedId: result.insertedId })
     } catch (error) {
         res.status(400).json({status:400,message:error.message})
     }
