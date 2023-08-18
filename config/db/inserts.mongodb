@@ -426,21 +426,21 @@ db.productos.insertMany([
         name: 'producto0',
         description: 'producto0',
         status: 1,
-        created_by: 16
+        created_by: 14
     },
     {
         ID: Number(autoIncrement("productos")),
         name: 'producto1',
         description: 'producto1',
         status: 1,
-        created_by: 14
+        created_by: 13
     },
     {
         ID: Number(autoIncrement("productos")),
         name: 'producto2',
         description: 'producto2',
         status: 1,
-        created_by: 13
+        created_by: 20
     },
     {
         ID: Number(autoIncrement("productos")),
@@ -498,118 +498,129 @@ use("db_mongo_bodegas");
 db.inventarios.insertMany([
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 12,
-        id_product: 18,
+        id_storage: 1,
+        id_product: 3,
         quantity: 103,
         created_by: 11,
         created_at: ISODate('2023-05-26')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 19,
-        id_product: 18,
+        id_storage: 2,
+        id_product: 3,
         quantity: 220,
         created_by: 19
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 20,
-        id_product: 13,
+        id_storage: 3,
+        id_product: 1,
         quantity: 13,
         created_by: 14
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 19,
-        id_product: 14,
+        id_storage: 4,
+        id_product: 2,
         quantity: 7,
         created_by: 15
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 12,
-        id_product: 27,
+        id_storage: 5,
+        id_product: 8,
         quantity: 9,
         created_by: 16
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 19,
-        id_product: 23,
+        id_storage: 6,
+        id_product: 4,
         quantity: 45666,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 26,
-        id_product: 24,
+        id_storage: 7,
+        id_product: 5,
         quantity: 45000,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 26,
-        id_product: 25,
+        id_storage: 8,
+        id_product: 6,
         quantity: 45666,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 26,
-        id_product: 26,
+        id_storage: 9,
+        id_product: 7,
         quantity: 6000,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 28,
-        id_product: 27,
+        id_storage: 10,
+        id_product: 8,
         quantity: 89700,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 23,
-        id_product: 28,
+        id_storage: 11,
+        id_product: 9,
         quantity: 9999,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 18,
-        id_product: 18,
+        id_storage: 12,
+        id_product: 3,
         quantity: 7898,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 18,
-        id_product: 27,
+        id_storage: 13,
+        id_product: 8,
         quantity: 55281,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 29,
-        id_product: 29,
+        id_storage: 14,
+        id_product: 10,
         quantity: 5993,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
     },
     {
         ID: Number(autoIncrement("inventarios")),
-        id_storage: 29,
-        id_product: 27,
+        id_storage: 15,
+        id_product: 8,
         quantity: 5005,
         created_at: ISODate('2022-06-03'),
         updated_at: ISODate('2022-06-03')
+    }
+]);
+use("db_mongo_bodegas");
+db.getCollection("productos").aggregate([
+    {
+        $lookup: {
+            from: 'inventarios',
+            localField: 'ID',
+            foreignField: 'id_product',
+            as: 'inventarios',
+        }
     }
 ]);
