@@ -28,9 +28,9 @@ const postBodega = async (req, res) => {
             created_at: new Date(creado_fecha)
         });
         console.log(result);
-        res.status(201).json({ message: "Bodega added successfully", insertedId: result.insertedId });
+        res.status(201).json({ message: "Bodega is added successfully", insertedId: result.insertedId });
     } catch (error) {
-        res.status(500).json({ message: "Error adding bodega", error: error });
+        res.status(400).json({ message: "Error adding bodega :C", error: error });
     }
 }
 export { getBodegas, postBodega }
