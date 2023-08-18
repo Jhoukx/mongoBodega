@@ -8,8 +8,6 @@ export const incrementID = async (coleccion) => {
             { $inc: { sequence_value: 1 } },
             { returnDocument: "after" }
         );
-        console.log('Pasa sequence ');
-        console.log(sequenceDocument);
         return sequenceDocument.value.sequence_value;
     } catch (error) {
         console.error("Error:", error);

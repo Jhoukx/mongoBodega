@@ -613,14 +613,3 @@ db.inventarios.insertMany([
         updated_at: ISODate('2022-06-03')
     }
 ]);
-use("db_mongo_bodegas");
-db.getCollection("productos").aggregate([
-    {
-        $lookup: {
-            from: 'inventarios',
-            localField: 'ID',
-            foreignField: 'id_product',
-            as: 'inventarios',
-        }
-    }
-]);
