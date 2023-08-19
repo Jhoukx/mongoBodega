@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb';
 import { con } from '../../config/connection/atlas.js'
 import { incrementID } from './counter.js';
 
@@ -33,4 +34,38 @@ const postBodega = async (req, res) => {
         res.status(400).json({ message: "Error adding bodega :C", error: error });
     }
 }
-export { getBodegas, postBodega }
+
+const putTrasladoBodega = async (req, res) => {
+    let inventario = await db.collection("inventarios");
+    if (!req.rateLimit) return;
+    console.log(req.rateLimit);
+
+    try {
+        const { id_origin_storage, id_target_storage, quantity } = req.body;
+        let bodegaA = await inventario.find({ ID: id_origin_storage }).toArray()
+        let bodegaB = await inventario.find({ ID: id_target_storage }).toArray()
+
+        let { quantity:quantityA,ID:idA } = bodegaA[0]
+        let { quantity: quantityB,ID:idB } = bodegaB[0]
+        
+        if (quantityA < quantity) res.status(400).json({ status: 400, message: "You cannot transfer more products than you have" })
+        console.log('ABefore',quantityA,"",'BBefore',quantityB);
+        quantityA -= quantity
+        quantityB += quantity
+        console.log('cantidadA:', quantityA + ' quantityB:', quantityB);
+        const updateBodegaA = await inventario.updateOne(
+            { ID: idA },
+            { $set: { quantity: quantityA } }
+        )
+        const updateBodegaB = await inventario.updateOne(
+            { ID: idB },
+            { $set: { quantity: quantityB } }
+        )
+        console.log('_idA:', idA + ' _idB:', idB);
+        res.send({status:200,message:"The documents has been updated"})
+    } catch (error) {
+        res.status(400).json({status:400,message:error.message});
+    } 
+    res.send();
+}
+export { getBodegas, postBodega, putTrasladoBodega }
