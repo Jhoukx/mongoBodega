@@ -52,3 +52,22 @@ Server running on http://127.54.11.1:3304
 
 ### Creación del token
 
+Es importante saber que el token es necesario enviarlo en el header y en cada petición que se desee hacer sin importar el tipo. Para la creación del token es necesario la siguiente estructura:
+```http
+http://127.54.11.1:3304/token/<coleccion>
+```
+
+A continuación se muestra el resultado esperado del mismo, para la creación del token para bodegas:
+
+<img src="./images/creacionToken.png" alt="crearToken" style="zoom:80%;"/>
+
+## Peticiones
+
+Para las peticiones hay un limite este se mostrara en la consola y dirá la cantidad de peticiones restantes y las que lleva en aquel momento. El array que se muestra de primero es el permiso de endpoints al que tiene acceso.
+
+### /bodegas
+
+Para el método GET del endpoint bodegas se debe hacer de esta manera y el resultado será este:
+
+<img src="./images/useToken.png" alt="TokenHeader" style="zoom:80%;"/>
+
