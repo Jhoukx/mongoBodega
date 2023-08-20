@@ -2,9 +2,11 @@ import { Router } from "express";
 import dotenv from 'dotenv';
 import { SignJWT, jwtVerify } from "jose";
 import { con } from "../../config/connection/atlas.js";
+import { ObjectId } from "mongodb";
 dotenv.config({ path: '../../.env' });
 
 const createToken = Router();
+const verifyToken = Router();
 
 const db = await con();
 const rol = await db.collection('rol');
@@ -29,4 +31,26 @@ createToken.get('/:colleccion', async (req, res) => {
     }   
 });
 
-export { createToken}
+verifyToken.use('/', async (req, res, next) => {
+    const { authorization } = req.headers;
+    if (!authorization) res.status(400).send({ status: 400, token: "Token not sent" });
+    try {
+        const encoder = new TextEncoder();
+        const jwtData = await jwtVerify(
+            authorization,
+            encoder.encode(process.env.JWT_PASSWORD)
+        );
+        req.data = jwtData;
+        const checkAccess = await rol.aggregate([{ $match: { _id: new ObjectId(req.data.payload._id) } }, { $project: { access: 1 } }]).toArray()
+        const access = checkAccess[0].access
+        // Validacion del rol permitido en la base de datos con el router al que se desea acceder
+        if(!access.includes(req.baseUrl)) res.status(401).json({status:401,message:"You do not have permission to access :C"});
+        console.log(req.data.payload._id);
+        console.log(checkAccess[0].access);
+        //if (access.includes())
+        next();
+    } catch (error) {
+        res.status(498).json({ status: 498, message: error.message })//"Token has expired or is invalid"
+    }
+});
+export { createToken, verifyToken }
