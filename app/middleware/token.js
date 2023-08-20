@@ -45,7 +45,6 @@ verifyToken.use('/', async (req, res, next) => {
         const access = checkAccess[0].access
         // Validacion del rol permitido en la base de datos con el router al que se desea acceder
         if(!access.includes(req.baseUrl)) res.status(401).json({status:401,message:"You do not have permission to access :C"});
-        console.log(req.data.payload._id);
         console.log(checkAccess[0].access);
         //if (access.includes())
         next();
