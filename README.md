@@ -67,7 +67,10 @@ Para las peticiones hay un limite este se mostrara en la consola y dirá la cant
 
 ### /bodegas
 
-Para el método GET del endpoint bodegas se debe hacer de esta manera y el resultado será este:
+Para el método **GET** del endpoint bodegas se debe hacer de esta manera y el resultado será este:
 
 <img src="./images/useToken.png" alt="TokenHeader" style="zoom:80%;"/>
 
+Para el método **POST** del endpoint bodegas se debe enviar el siguiente Json, SOLO recibe parámetros obligatorios a la base de datos. A continuación se detalla un ejemplo para esta petición:
+
+<img src="./images/postBodegas.png" alt="TokenHeader" style="zoom:80%;"/>
