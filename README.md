@@ -73,4 +73,31 @@ Para el método **GET** del endpoint bodegas se debe hacer de esta manera y el r
 
 Para el método **POST** del endpoint bodegas se debe enviar el siguiente Json, SOLO recibe parámetros obligatorios a la base de datos. A continuación se detalla un ejemplo para esta petición:
 
+```json
+{
+  "nombre_bodega": "Elbodega",
+  "id_responsable":5,
+  "estado_bodega": 1,
+  "creado_por":10,
+  "creado_fecha": "2023-08-22"
+}
+```
+
 <img src="./images/postBodegas.png" alt="TokenHeader" style="zoom:80%;"/>
+
+### /productos
+
+para el método **POST** del endpoint productos aparecerá la siguiente respuesta y se debe usar los siguientes parámetros:
+
+```json
+{
+  "nombre_producto": "Lata cita",
+  "estado_producto":1,
+  "creado_por": 8,
+  "creado_fecha": "2023-09-20"
+}
+```
+<img src="./images/postProductos.png" alt="TokenHeader" style="zoom:80%;"/>
+
+
+
