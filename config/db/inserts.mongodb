@@ -613,3 +613,17 @@ db.inventarios.insertMany([
         updated_at: ISODate('2022-06-03')
     }
 ]);
+
+
+/**
+ * ! Es necesario limitar a name que solo reciba caracteres alfanumericos para evitar inserciones de mongo
+ */
+use("db_mongo_bodegas");
+db.createCollection("rol");
+db.rol.insertMany([
+    { ID: Number(autoIncrement("rol")) ,name: "Admin",access:["bodegas","inventarios","productos"]},
+    { ID: Number(autoIncrement("rol")), name: "bodegas", access: "bodegas" },
+    { ID: Number(autoIncrement("rol")), name: "inventarios", access: "inventarios" },
+    { ID: Number(autoIncrement("rol")), name: "productos", access: "productos" },
+]);
+
