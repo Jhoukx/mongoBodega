@@ -92,7 +92,14 @@ db.historiales.insertMany([
 
 
 use("db_mongo_bodegas");
-
+function autoIncrement(coleccion) {
+    const sequenceDocument = db.counters.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
 db.users.insertMany([
     {
         ID: Number(autoIncrement("users")),
@@ -166,14 +173,7 @@ db.users.insertMany([
     }
 ]);
 
-function autoIncrement(coleccion) {
-    const sequenceDocument = db.counters.findOneAndUpdate(
-        { _id: `${coleccion}Id` },
-        { $inc: { sequence_value: 1 } },
-        { returnDocument: "after" }
-    );
-    return sequenceDocument.sequence_value;
-}
+
 use("db_mongo_bodegas");
 db.bodegas.insertMany([
     {
