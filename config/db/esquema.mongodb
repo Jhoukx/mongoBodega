@@ -5,7 +5,8 @@ db.counters.insertMany([
     { _id: "bodegasId", sequence_value: 0 },
     { _id: "productosId", sequence_value: 0 },
     { _id: "inventariosId", sequence_value: 0 },
-    { _id: "historialesId", sequence_value: 0 }
+    { _id: "historialesId", sequence_value: 0 },
+    { _id: "rolId", sequence_value: 0 },
 ]);
 
 
